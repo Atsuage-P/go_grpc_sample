@@ -19,5 +19,10 @@ grpcurl -plaintext localhost:8080 list myapp.GreetingService
 
 # メソッドの呼び出し
 grpcurl -plaintext -d '{"name": "user"}' localhost:8080 <メソッド名>
+
+# Unary RPC(1リクエスト-1レスポンス)
 grpcurl -plaintext -d '{"name": "user"}' localhost:8080 myapp.GreetingService.Hello
+
+# Server Streaming RPC(1リクエスト-複数レスポンス)
+grpcurl -plaintext -d '{"name": "user"}' localhost:8080 myapp.GreetingService.HelloServerStream
 ```
