@@ -3,9 +3,12 @@
 - [zennの記事](https://zenn.dev/hsaki/books/golang-grpc-starting) を参考
 
 ## 動作確認
-- サーバ起動
 ```
-go run main.go
+# サーバ側
+go run ./cmd/server/main.go
+
+# クライアント側
+go run ./cmd/client/main.go
 ```
 
 - `gRPCurl` による動作確認
@@ -25,4 +28,7 @@ grpcurl -plaintext -d '{"name": "user"}' localhost:8080 myapp.GreetingService.He
 
 # Server Streaming RPC(1リクエスト-複数レスポンス)
 grpcurl -plaintext -d '{"name": "user"}' localhost:8080 myapp.GreetingService.HelloServerStream
+
+# Client Streaming RPC(複数リクエスト-1レスポンス)
+grpcurl -plaintext -d '{"name": "user1"}{"name": "user2"}{"name": "user3"}{"name": "user4"}{"name": "user5"}' localhost:8080 myapp.GreetingService.HelloClientStream
 ```
