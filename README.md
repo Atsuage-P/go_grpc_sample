@@ -31,4 +31,7 @@ grpcurl -plaintext -d '{"name": "user"}' localhost:8080 myapp.GreetingService.He
 
 # Client Streaming RPC(複数リクエスト-1レスポンス)
 grpcurl -plaintext -d '{"name": "user1"}{"name": "user2"}{"name": "user3"}{"name": "user4"}{"name": "user5"}' localhost:8080 myapp.GreetingService.HelloClientStream
+
+# 双方向ストリーミングRPC(任意のタイミングでリクエスト・レスポンス)
+grpcurl -plaintext -d '{"name": "user1"}{"name": "user2"}{"name": "user3"}{"name": "user4"}{"name": "user5"}' localhost:8080 myapp.GreetingService.HelloBiStreams
 ```
