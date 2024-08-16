@@ -5,7 +5,7 @@
 ## 動作確認
 ```
 # サーバ側
-go run ./cmd/server/main.go
+go run ./cmd/server/
 
 # クライアント側
 go run ./cmd/client/main.go
@@ -35,3 +35,6 @@ grpcurl -plaintext -d '{"name": "user1"}{"name": "user2"}{"name": "user3"}{"name
 # 双方向ストリーミングRPC(任意のタイミングでリクエスト・レスポンス)
 grpcurl -plaintext -d '{"name": "user1"}{"name": "user2"}{"name": "user3"}{"name": "user4"}{"name": "user5"}' localhost:8080 myapp.GreetingService.HelloBiStreams
 ```
+
+## メモ
+- `package main` のファイルが複数ある場合、`go run ./cmd/server/main.go` だとそのファイルのみをコンパイルしようとするため、複数ファイルを含めてコンパイルするときは `go run ./cmd/server/` とする
