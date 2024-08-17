@@ -29,6 +29,15 @@ func main() {
 	address := "localhost:8080"
 	conn, err := grpc.NewClient(
 		address,
+		grpc.WithChainUnaryInterceptor(
+			myUnaryClientInteceptor1,
+			myUnaryClientInteceptor2,
+		),
+		grpc.WithChainStreamInterceptor(
+			myStreamClientInteceptor1,
+			myStreamClientInteceptor2,
+		),
+
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 	)
 	if err != nil {

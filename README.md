@@ -8,7 +8,7 @@
 go run ./cmd/server/
 
 # クライアント側
-go run ./cmd/client/main.go
+go run ./cmd/client/
 ```
 
 - `gRPCurl` による動作確認
@@ -37,4 +37,6 @@ grpcurl -plaintext -d '{"name": "user1"}{"name": "user2"}{"name": "user3"}{"name
 ```
 
 ## メモ
+- client側の `grpc.Dial` は非推奨のため、代わりに `grpc.NewClient` を使う
 - `package main` のファイルが複数ある場合、`go run ./cmd/server/main.go` だとそのファイルのみをコンパイルしようとするため、複数ファイルを含めてコンパイルするときは `go run ./cmd/server/` とする
+- 同様に、client側も `go run ./cmd/client/` で起動が可能
