@@ -40,3 +40,5 @@ grpcurl -plaintext -d '{"name": "user1"}{"name": "user2"}{"name": "user3"}{"name
 - client側の `grpc.Dial` は非推奨のため、代わりに `grpc.NewClient` を使う
 - `package main` のファイルが複数ある場合、`go run ./cmd/server/main.go` だとそのファイルのみをコンパイルしようとするため、複数ファイルを含めてコンパイルするときは `go run ./cmd/server/` とする
 - 同様に、client側も `go run ./cmd/client/` で起動が可能
+- クライアント -> サーバ に付加情報を送信する場合は `メタデータ` を使用する(リクエストヘッダー的なもの)
+- サーバ -> クライアント に付加情報を送信する場合は `ヘッダー・トレーラー` を使用する(レスポンスヘッダー的なもの)
